@@ -12,9 +12,12 @@ chrome.extension.onRequest.addListener(
 //タブが変更された時の処理
 chrome.tabs.onSelectionChanged.addListener(function(tabid){
   chrome.tabs.getSelected(null, function(tab) {
-    chrome.tabs.sendRequest(tab.id, {greeting: "hello"}, function(response) {
-      generateBookmarkData(request.post_title);
-    });
+    console.log("change tab");
+    generateBookmarkData(tab.title + "URL:" + tab.url);
+    /*chrome.tabs.sendRequest(tab.id, {greeting: "hello"}, function(response) {
+      console.log(response);
+      generateBookmarkData(response.post_title);
+    });*/
   });
 });
 
@@ -34,7 +37,7 @@ function generateBookmarkData(str){
   // URL生成
   if(url==''){
     chrome.tabs.getSelected(null,function(tab) {
-      url = tab.url; 
+      url = tab.url;
     });
   }
 }

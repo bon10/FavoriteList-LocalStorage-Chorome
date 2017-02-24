@@ -16,7 +16,7 @@ function save() {
   title = bg.title;
   url = bg.url;
   if(!window.localStorage.getItem("num")){
-    window.localStorage.setItem("num", "000001");
+    window.localStorage.setItem("num", "00000000000000000000000000001");
   }
   //window.localStorage.setItem(url, title);
   window.localStorage.setItem(window.localStorage.getItem("num") + ':' + url, title);
@@ -26,7 +26,7 @@ function save() {
 
 
 /*
- * 
+ *
  */
 function load(){
     //var list = document.getElementById("list");
@@ -35,7 +35,7 @@ function load(){
         var str = keys.substring(keys.indexOf(':')+1,keys.length);
         $('#list ul').append('<li><a href="'+str+'">'+htmlEscape(localStorage[keys])+
                              '</a><button class="delete" value="'+keys+'">削除</button></li>')
-        
+
       }
     }
 }
@@ -45,7 +45,7 @@ function load(){
  * bookmark削除
  */
 function delete_keys(keys){
-  alert(keys);
+  //alert(keys);
   window.localStorage.removeItem(keys);
   location.reload();
 }
